@@ -1,0 +1,25 @@
+###
+### Creating Relicaset with template. In this example I have used the template of the existing pod. If pod does not exist then do not use templete. 
+###
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: mywebsite
+    tier: frontend
+spec:
+  replicas: 4
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+  selector:
+    matchLabels:
+      app: myapp
