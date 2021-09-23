@@ -1,0 +1,12 @@
+## The followin pod is defined with the purpose to use it as a templete in the replicaset. For the use of templete in the replicaset pod should exist on the sysetm
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+    - name: nginx
+      image: nginx
