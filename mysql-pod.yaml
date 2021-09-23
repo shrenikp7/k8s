@@ -1,0 +1,25 @@
+ ###  While creating mysql pod in Kubernetes make sure to use any one of the following in the env: section of the pod definiation file to avoid error.  
+ ###   You need to specify one of the following:
+ ###   - MYSQL_ROOT_PASSWORD
+ ###   - MYSQL_ALLOW_EMPTY_PASSWORD
+ ###   - MYSQL_RANDOM_ROOT_PASSWORD
+ 
+ ###  Followng code will create pod with MySQL latest replease of MySQL Community Edition. 
+ ###  To create the pod - kubectl apply -f <file_name>
+ ###  Get Mysql logs information to find out the MySQL version - kubectl logs <pod_name>
+ ###  Describe the pod - kubectl describe pod my-mysql 
+ ###  Get ip address, code by describing pod. Connect mysql instance using - mysql -uroot -p<admin> -h<ip_address> -P3306
+ 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-mysql
+  labels:
+    tier: db-tier
+spec:
+  containers:
+    - name: my-mysql
+      image: mysql
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: admin
