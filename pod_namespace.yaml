@@ -1,0 +1,13 @@
+## In the following example I have used namespace dev for the application web-app
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: web-app
+  name: web-app
+  namespace: dev
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
